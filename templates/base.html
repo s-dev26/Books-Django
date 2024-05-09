@@ -1,0 +1,107 @@
+{%  load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"> 
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+</head>
+<body>
+    <header class="header">
+        <div class="header_1">
+        <a href="#" class="logo"> <i class="fas fa-book"></i> Books</a>
+
+        <div class="icons">
+            <a href="#" class="fas fa-shopping-cart"></a>
+            <div id="login-btn" class="fas fa-user"></div>
+        </div>
+    </div>
+
+        <div class="header_2">
+            <nav class="navbar">
+                <a href="#home">Accueil</a>
+                <a href="#ourselection">Notre sélection</a>
+                <a href="#novelty">Nouveautés</a>
+                <a href="#reviews">Avis</a>
+                <a href="#footer">Contact</a>
+            </nav>
+        </div>
+    </header>
+    <nav class="bottom-navbar">
+        <a href="#home" class="fas fa-home"></a>
+        <a href="#ourselection" class="fas fa-list"></a>
+        <a href="#novelty" class="fas fa-tags"></a>
+        <a href="#reviews" class="fas fa-comments"></a>
+        <a href="#footer" class="fas fa-envelope"></a>
+    </nav>
+
+<div class="login-form-container">
+    <div id="close-login-btn" class="fas fa-times"></div>
+    
+    <form action="">
+        <h3>Me connecter</h3>
+        <span>E-mail</span>
+        <input type="email" name="" class="box" placeholder="Votre email" id="">
+        <span>Mot de passe</span>
+        <input type="password" name="" class="box" placeholder="Votre mot de passe" id="">
+        <div class="checkbox">
+            <input type="checkbox" name="" id="remember-me">
+            <label for="remember-me">Se souvenir</label>
+        </div>
+        <input type="submit" value="Se connecter" class="btn">
+        <p>Mot de passe oublié ?<a href="#"> Cliquez-ici</a></p>
+        <p>Vous n'avez pas de compte ?<a href="#"> Créez-en un</a></p>
+    </form>
+</div>
+
+{% block content %}
+
+{% endblock %}
+
+<section class="footer" id="footer">
+    <div class="box-container">
+        <div class="box">
+            <h3>Nos boutiques</h3>
+            <a href="#"> <i class="fas fa-map-marker-alt"></i>10 Avenue des Champs-Élysées, 75008 Paris</a>
+            <a href="#"> <i class="fas fa-map-marker-alt"></i>2 Avenue de l'Opéra, 75002 Paris</a>
+            <a href="#"> <i class="fas fa-map-marker-alt"></i>1 Rue de Paris, 75001 Paris</a>
+        </div>
+        
+        <div class="box">
+            <h3>Rubriques</h3>
+            <a href="#"> <i class="fas fa-arrow-right"></i>Accueil </a>
+            <a href="#"> <i class="fas fa-arrow-right"></i>Notre séléction </a>
+            <a href="#"> <i class="fas fa-arrow-right"></i>Nouveautés </a>
+            <a href="#"> <i class="fas fa-arrow-right"></i>Avis </a>
+        </div>
+        <div class="box">
+            <a href="#"> <i class="fas fa-arrow-right"></i>Politique de confidentialité</a>
+            <a href="#"> <i class="fas fa-arrow-right"></i>Mentions légales</a>
+        </div>
+        <div class="box">
+            <h3>Contact</h3>
+            <a href="#"> <i class="fas fa-phone"></i> 06.00.00.00.00</a>
+            <a href="#"> <i class="fas fa-envelope"></i>books@books.fr</a>
+            <img src="/media/images/worldmap.png" class="map" alt="">
+        </div>
+    </div>
+
+    <div class="share">
+        <a href="#" class="fab fa-facebook-f"></a>
+        <a href="#" class="fab fa-instagram"></a>
+        <a href="#" class="fab fa-tiktok"></a>
+    </div>
+    <div class="credit">Produced by <span><a href="#">S-DEV</a></span> | Copyright 2024</div>
+
+</section>
+
+<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+<script src="{% static 'js/script.js' %}"></script>
+
+</body>
+
+</html>
+

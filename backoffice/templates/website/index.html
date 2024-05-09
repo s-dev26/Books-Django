@@ -1,0 +1,164 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="home" id="home">
+    <div class="row">
+        {% for homesection in homesections %}
+            <div class="content">
+                <h3>{{ homesection.title }}</h3>
+                <p>{{ homesection.content }}</p>
+                <a href="#footer" class="btn">Nos boutiques</a>
+            </div>
+        {% endfor %}
+        <div class="swiper books-slider">
+            <div class="swiper-wrapper">
+                {% for slide in slides %}
+                <a href="" class="swiper-slide">
+                        <img src="{{ slide.image.url }}" alt="">
+                    </a>
+                {% endfor %}
+            </div>
+            <img src="media/images/stand.png" class="stand" alt="">
+        </div>
+    </div>
+</section>
+
+<section class="icons-container">
+    <div class="icons">
+        <i class="fas fa-plane"></i>
+        <div class="content">
+            <h3>Livraison gratuite</h3>
+            <p>dès 60€ de commande</p>
+        </div>
+    </div>
+        <div class="icons">
+            <i class="fas fa-lock"></i>
+            <div class="content">
+                <h3>Paiement sécurisé</h3>
+                <p>100% sécurisé</p>
+            </div>
+        </div>
+        <div class="icons">
+            <i class="fas fa-redo-alt"></i>
+            <div class="content">
+                <h3>Délai de retour</h3>
+                <p>10 jours à compter de la date de réception</p>
+            </div>
+        </div>
+        <div class="icons">
+            <i class="fas fa-headset"></i>
+            <div class="content">
+                <h3>Assistance 24h/24</h3>
+                <p>À tout moment</p>
+            </div>
+        </div>
+</section>
+
+    <section class="ourselection" id="ourselection">
+        <h1 class="heading"><span>Notre sélection</span></h1>
+
+        <div class="swiper ourselection-slider">
+            <div class="swiper-wrapper">
+                {% for book in books %}
+                    <div class="swiper-slide box">
+                        <div class="icons">
+                            <a href="#" class="fas fa-eye"></a>
+                            <a href="#" class="fas fa-shopping-cart"></a>
+                        </div>
+                        <div class="image">
+                            <img src="{{ book.image.url }}" alt="{{ book.title }}">
+                        </div>
+                        <div class="content">
+                            <h3>{{ book.title }}</h3>
+                            <div class="price">{{ book.price }}€</div>
+                            <a href="#" class="btn">Commander</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </section>
+
+
+    <section class="novelty" id="novelty">
+        <h1 class="heading"><span>Nouveautés</span></h1>
+        
+        <div class="swiper novelty-slider">
+            <div class="swiper-wrapper">
+                {% for noveltie in novelties %}
+                    <a href="#" class="swiper-slide box">
+                        <div class="image">
+                            <img src="{{ noveltie.image.url }}">
+                        </div>
+                        <div class="content">
+                            <h3>{{ noveltie.title }}</h3>
+                            <div class="price">{{ noveltie.price }}€</div>
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+
+        {% for announcement in announcements %}
+            <section class="announcement">
+                <div class="content">
+                    <h3>{{ announcement.title }}</h3>
+                    <p>{{ announcement.description }}</p>
+                    <button class="btn">Contactez-nous</button>
+                </div>
+    
+                <div class="image">
+                    <img src="{{ announcement.image.url }}" alt="{{ announcement.title }}">
+                </div>
+            </section>
+        {% endfor %}
+
+<section class="reviews" id="reviews">
+    <div class="reviews">
+        <h1 class="heading"><span>Avis</span></h1>
+        <div class="swiper reviews-slider">
+            <div class="swiper-wrapper">
+                {% for review in reviews %}
+                <div class="swiper-slide box">
+                    <img src="/media/images/avatar.jpg" alt="">
+                    <h3>{{ review.author }}</h3>
+                    {% for _ in review.get_stars %}<span class="star">★</span>{% endfor %}
+                    <p>{{ review.content }}</p>
+
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<div id="button_container">
+    <button id="button_review">Laisser un avis</button>
+  </div>
+<br>  
+<div id="form_review" style="display: none;">
+    <form method="POST" id="reviewform">
+        {% csrf_token %}
+        <input type="text" name="author" placeholder="Votre prénom" pattern="^[A-Za-z\s]+$" title="" required></input>
+        <div class="rating">
+            <input type="radio" id="star1" name="rating" value="1" class="star-input" style="display: none;">
+            <label for="star1" class="star-label">★</label>
+            <input type="radio" id="star2" name="rating" value="2" class="star-input" style="display: none;">
+            <label for="star2" class="star-label">★</label>
+            <input type="radio" id="star3" name="rating" value="3" class="star-input" style="display: none;">
+            <label for="star3" class="star-label">★</label>
+            <input type="radio" id="star4" name="rating" value="4" class="star-input" style="display: none;">
+            <label for="star4" class="star-label">★</label>
+            <input type="radio" id="star5" name="rating" value="5" class="star-input" style="display: none;">
+            <label for="star5" class="star-label">★</label>
+        </div>    
+        <textarea class="message_container" name="review_container" placeholder="Votre avis"></textarea>
+        <button type="submit">Ajouter un avis</button>
+    </form> 
+</div>
+
+{% endblock %}
