@@ -1,30 +1,25 @@
 const expandButton = document.getElementById("button_review");
 const expandableForm = document.getElementById("form_review");
+const stars = document.querySelectorAll(".star-label");
 
 expandButton.addEventListener("click", function () {
   expandableForm.style.display =
     expandableForm.style.display === "none" ? "block" : "none";
 });
 
-const stars = document.querySelectorAll(".star-label");
+stars.forEach((star, index) => {
+star.addEventListener("click", () => {
+stars.forEach((s) => s.classList.remove("selected"));
 
-stars.forEach((star) => {
-  star.addEventListener("click", function () {
-    const clickedStarValue = parseInt(
-      this.getAttribute("for").replace("star", "")
-    );
-    const ratingInput = document.querySelector("#rating");
+const starClicked = document.getElementById(`star${index+1}`);
+const clickedStarValue = starClicked.value;
 
-    stars.forEach((s) => s.classList.remove("selected"));
-    for (let i = 1; i <= clickedStarValue; i++) {
-      const starInput = document.getElementById("star" + i + "_review");
-      starInput.checked = true;
-      document
-        .querySelector(`label[for="star${i}_review"]`)
-        .classList.add("selected");
-    }
-    ratingInput.value = clickedStarValue;
-  });
+for (let i = 1; i <= clickedStarValue; i++) {
+const starInput = document.getElementById(`star${i}`);
+starInput.checked = true;
+document.querySelector(`label[for="star${i}"]`).classList.add("selected");
+}
+});
 });
 
 let loginForm = document.querySelector(".login-form-container");
